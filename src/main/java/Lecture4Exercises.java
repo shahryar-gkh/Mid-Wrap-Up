@@ -1,52 +1,63 @@
+import java.lang.reflect.Array;
+
 public class Lecture4Exercises {
-
-    /*
-     *   implement a function that returns factorial of given n
-     *   lecture 4 page 15
-     */
     public long factorial(int n) {
-        return 0L;
+        long result = 1;
+        for (int i = n; i > 0; i--) {
+            result *= i;
+        }
+        return result;
     }
 
-    /*
-     *   implement a function that return nth number of fibonacci series
-     *   the series -> 1, 1, 2, 3, 5, 8, ...
-     *   lecture 4 page 19
-     */
     public long fibonacci(int n) {
-        return 0;
+        long a = 1, b = 1;
+        int i = 2;
+        while (i <= n) {
+            long sum = a + b;
+            a = b;
+            b = sum;
+            i++;
+        }
+        return a;
     }
 
-    /*
-     *   implement a function that return reverse of a given word
-     *   lecture 4 page 19
-     */
     public String reverse(String word) {
-        return null;
+        int length = word.length();
+        String reversed = "";
+        for (int i = length-1; i >= 0; i--) {
+            reversed = reversed + word.charAt(i);
+        }
+        return reversed;
     }
 
-    /*
-     *   implement a function that returns true if the given line is
-     *   palindrome and false if it is not palindrome.
-     *   palindrome is like 'wow', 'never odd or even', 'Wow'
-     *   lecture 4 page 19
-     */
     public boolean isPalindrome(String line) {
-        return false;
+        line = line.replaceAll("\\s+", "");
+        line = line.toLowerCase();
+        System.out.println(line);
+        int i = 0, j = line.length()-1;
+        while (i < j) {
+            if (line.charAt(i) != line.charAt(j)) {
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
     }
 
-    /*
-     *   implement a function which computes the dot plot of 2 given
-     *   string. dot plot of hello and ali is:
-     *       h e l l o
-     *   h   *
-     *   e     *
-     *   l       * *
-     *   l       * *
-     *   o           *
-     *   lecture 4 page 26
-     */
     public char[][] dotPlot(String str1, String str2) {
-        return null;
+        char[][] result = new char[str1.length()][str2.length()];
+        for (int i = 0; i < str1.length(); i++) {
+            char character = str1.charAt(i);
+            for (int j = 0; j < str2.length(); j++) {
+                if (str2.charAt(j) == character) {
+                    result[i][j] = '*';
+                }
+                else {
+                    result[i][j] = ' ';
+                }
+            }
+        }
+        return result;
     }
 }
