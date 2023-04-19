@@ -106,5 +106,4 @@ public class Lecture6ExercisesTest {
         assertEquals("are", output.get(2));
         assertEquals("you", output.get(3));
     }
-
 }
